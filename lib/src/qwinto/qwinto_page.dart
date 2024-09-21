@@ -13,7 +13,14 @@ class QwintoPage extends StatelessWidget {
 
     return ChangeNotifierProvider(
       create: (context) => QwintoState(),
-      child: const QwintoGrid(),
+      child: const SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: QwintoGrid(),
+        ),
+      ),
+
     );
   }
       

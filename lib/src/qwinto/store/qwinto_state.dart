@@ -46,6 +46,10 @@ class QwintoState extends ChangeNotifier {
   };
 
 
+  int? getRowValue(String color, int position) {
+     return colorMap[color]![position];
+  }
+
   void updateRow(String color, int position, int value) {
      currentRoll = value;
      updateRowRoll(color, position);

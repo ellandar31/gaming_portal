@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Qwinto App'), // Barre en haut
+        title: const Text('Qwinto App v2'), // Barre en haut
             backgroundColor: Colors.blue, // Couleur de la barre
         actions: const [
           //TODO add your actions here 

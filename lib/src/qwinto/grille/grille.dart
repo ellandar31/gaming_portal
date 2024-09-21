@@ -23,7 +23,7 @@ class QwintoGrid extends StatelessWidget {
               // Affiche la Row pour la couleur bleue
               ColorRowWidget(color: QwintoState.blue),
             ],
-          ),
+        ),
       ),
     );
   }
