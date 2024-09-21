@@ -29,7 +29,31 @@ class QwintoState extends ChangeNotifier {
     colorMap[blue]![4] = -1;
     colorMap[blue]![10] = -2;
     colorMap[blue]![11] = -2;
+    errorList= [];
  }
+
+  void reinit(){
+    colorMap = {
+      red: List.filled(12, null),
+      yellow: List.filled(12, null),
+      blue: List.filled(12, null),
+    };
+
+    colorMap[red]![0] = -2;
+    colorMap[red]![1] = -2;
+    colorMap[red]![5] = -1;
+
+    colorMap[yellow]![0] = -2;
+    colorMap[yellow]![6] = -1;
+    colorMap[yellow]![11] = -2;
+
+    colorMap[blue]![4] = -1;
+    colorMap[blue]![10] = -2;
+    colorMap[blue]![11] = -2;
+    errorList= [];
+    //calculateScore();
+    notifyListeners();
+  }
 
 //----------------------------------------------
 //     Lignes
