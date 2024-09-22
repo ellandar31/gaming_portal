@@ -185,11 +185,15 @@ class QwintoState extends ChangeNotifier {
   void calculateColumnBonus(int position) {
     // Vérifie si toutes les valeurs aux mêmes positions dans les trois listes ne sont pas null
     
-
-    if ([blue, red, yellow].every((c) => colorMap[c]![position] != null)) {
-      // Retourne la valeur de la couleur donnée ou 0 si null
-      String couleur = columns[position]!['color'];
-      columns[position]!['score'] = colorMap[couleur]![position] ?? 0; 
+    if(columns.containsKey(position)){
+      if(colorMap[red]![position] != null && 
+         colorMap[yellow]![position] != null &&
+         colorMap[blue]![position] != null)
+      {
+        // Retourne la valeur de la couleur donnée ou 0 si null
+        String couleur = columns[position]!['color'];
+        columns[position]!['score'] = colorMap[couleur]![position] ?? 0; 
+      }
     }
   }
 }
