@@ -19,7 +19,7 @@ class ColorRowWidget extends StatelessWidget {
 
     var qwintoState = Provider.of<QwintoState>(context);
     List<int?> values = qwintoState.colorMap[color]!;
-    Map<int, String> columnBonus = qwintoState.columns;
+    Map<int, Map<String, dynamic>> columnBonus = qwintoState.columns;
 
     return Container(
       color: currentColor,
@@ -30,7 +30,7 @@ class ColorRowWidget extends StatelessWidget {
     );
   }
   
-  List<Widget> getCellList(List<int?> values,BuildContext context, QwintoState qwintoState, Color currentColor, Map<int, String> columnBonus){
+  List<Widget> getCellList(List<int?> values,BuildContext context, QwintoState qwintoState, Color currentColor,Map<int, Map<String, dynamic>> columnBonus){
     return  List.generate(
       values.length,
       (index) {
@@ -45,7 +45,7 @@ class ColorRowWidget extends StatelessWidget {
               child: Cellule(
                 value: values[index],
                 currentColor: currentColor,
-                formCell: columnBonus.containsKey(index) ? columnBonus[index] == color : false,
+                formCell: columnBonus.containsKey(index) ? columnBonus[index]!['color'] == color : false,
               ),
             ));
       }

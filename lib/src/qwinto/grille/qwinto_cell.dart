@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'qwinto_circle.dart';
-import 'qwinto_pentagram.dart';
+import '../commun/qwinto_circle.dart';
+import '../commun/qwinto_pentagram.dart';
 
 class Cellule extends StatelessWidget {
   const Cellule({

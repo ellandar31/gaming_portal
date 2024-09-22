@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:gaming_portal/src/qwinto/errorScore/error_column.dart';
 import 'package:gaming_portal/src/qwinto/grille/grille.dart';
+import 'package:gaming_portal/src/qwinto/score/score_bar.dart';
 
 class QwintoPage extends StatelessWidget {
   const QwintoPage({super.key});
@@ -8,14 +10,30 @@ class QwintoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return const SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: QwintoGrid(),
-        ),
+    return Container(
+      color : Colors.grey,
+      child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: getContent(),
+          ),
+      ),
     );
   }
-      
 
+  Widget getContent() {
+    return const Column(
+      children :
+      [
+        Row(
+          children: [
+            QwintoGrid(),
+            ErrorCheckWidget(),
+          ],
+        ),
+        QwintoScoreBar(),
+      ]
+    );
+  }
 }
