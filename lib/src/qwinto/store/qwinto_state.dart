@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 class QwintoState extends ChangeNotifier {
-  late int currentRoll;
+  late int? currentRoll;
 
   static const String red = "RED";
   static const String yellow = "YELLOW";
   static const String blue = "BLUE";
-
 
   Map<int, Map<String, dynamic>> columns = {
     2: {'color': blue, 'score': 0},
@@ -22,10 +21,6 @@ class QwintoState extends ChangeNotifier {
     blue: List.filled(12, null),
   };
 
-  int scoreErreur = 0;
-  int scoreTotal = 0;
-  bool endParty = false;
-
   Map<String, int> lineScoreMap = {
     red: 0,
     yellow: 0,
@@ -33,6 +28,10 @@ class QwintoState extends ChangeNotifier {
   };
 
   List<int> colScores = List.filled(5, 0);  
+
+  int scoreErreur = 0;
+  int scoreTotal = 0;
+  bool endParty = false;
 
   QwintoState(){
     colorMap[red]![0] = -2;
@@ -105,7 +104,7 @@ class QwintoState extends ChangeNotifier {
      return colorMap[color]![position];
   }
 
-  void updateRow(String color, int position, int value) {
+  void updateRow(String color, int position, int? value) {
      currentRoll = value;
      updateRowRoll(color, position);
   }

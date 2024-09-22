@@ -32,9 +32,23 @@ class ErrorCheckWidget extends StatelessWidget {
       errors.length,
       (index) {
         // Création des Text pour chaque valeur dans la liste
-        return Checkbox(value: errors[index]! > 0, onChanged: (bool? value){qwintoState.addToError(value!,index);});
+        return Checkbox(value: errors[index]! > 0, 
+              checkColor: Colors.black,
+              fillColor: WidgetStateProperty.resolveWith(getColor),
+              onChanged: (bool? value){qwintoState.addToError(value!,index);});
       }
     );
   }
+
+  
+    Color getColor(Set<WidgetState> states) {
+      const Set<WidgetState> interactiveStates = <WidgetState>{
+        WidgetState.pressed,
+      };
+      if (states.any(interactiveStates.contains)) {
+        return Colors.blue;
+      }
+      return Colors.white;
+    }
 
 }

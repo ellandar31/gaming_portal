@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:gaming_portal/src/qwinto/store/qwinto_state.dart';
 import 'package:gaming_portal/src/qwinto/grille/qwinto_row.dart';
