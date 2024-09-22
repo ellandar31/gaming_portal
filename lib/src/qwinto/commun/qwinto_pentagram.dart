@@ -1,29 +1,23 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:gaming_portal/src/qwinto/store/qwinto_cell.dart';
 
 class PentagonCell extends StatelessWidget {
   const PentagonCell({
-    super.key,
-    required this.value,
+    super.key,required this.qwintoCell,    
   });
 
-  final int? value;
+  final QwintoCell qwintoCell;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 40,
-      height: 40, // Taille fixe pour le pentagone
+    return SizedBox( width: 40, height: 40, 
       child: CustomPaint(
         painter: PentagonPainter(), // Utilisation du PentagonPainter pour dessiner le pentagone
-        child: Center(
-          child: Text(
-            value?.toString() ?? '',
+        child: Center( child: Text(
+            qwintoCell.getValue() > 0 ? qwintoCell.getValue().toString() : '',
             textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.black,
-            ),
+            style: const TextStyle( fontSize: 16, color: Colors.black,),
           ),
         ),
       ),

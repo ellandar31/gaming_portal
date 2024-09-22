@@ -1,30 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:gaming_portal/src/qwinto/store/qwinto_cell.dart';
 
 class CircleCell extends StatelessWidget {
   const CircleCell({
-    super.key,
-    required this.value,
+    super.key, required this.qwintoCell,    
   });
 
-  final int? value;
+  final QwintoCell qwintoCell;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 40,
-      height: 40, // Largeur et hauteur identiques pour former un cercle
-      decoration: const BoxDecoration(
-        shape: BoxShape.circle, // Forme circulaire
-        color: Colors.white, // Couleur du fond
-      ),
+    return Container( width: 40, height: 40, 
+      decoration: const BoxDecoration( shape: BoxShape.circle, color: Colors.white, ),
       child: Center(
         child: Text(
-          value?.toString() ?? '',
+          qwintoCell.getValue() > 0 ? qwintoCell.getValue().toString() : '',
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 16,
-            color: Colors.black,
-          ),
+          style: const TextStyle( fontSize: 16, color: Colors.black ,),
         ),
       ),
     );

@@ -1,36 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:gaming_portal/src/qwinto/commun/qwinto_circle.dart';
+import 'package:gaming_portal/src/qwinto/commun/qwinto_pentagram.dart';
+import 'package:gaming_portal/src/qwinto/store/qwinto_cell.dart';
+import 'package:gaming_portal/src/qwinto/store/qwinto_enums.dart';
 
-import '../commun/qwinto_circle.dart';
-import '../commun/qwinto_pentagram.dart';
 
 class Cellule extends StatelessWidget {
-  const Cellule({
-    super.key,
-    required this.value,
-    required this.formCell,
-    required this.currentColor,
-  });
+  const Cellule({ super.key, required this.qwintoCell,});
 
-  final int? value;
-  final bool formCell;
-  final Color currentColor;
+  final QwintoCell qwintoCell;
 
   @override
   Widget build(BuildContext context) {
     // Affiche un widget distinct selon la valeur de formCell
-    if (value != null && value! < 0){
-      return Container(
-      width: 40,
-      height: 40, // Largeur et hauteur identiques pour former un cercle
-      decoration: BoxDecoration(
-        shape: BoxShape.rectangle, // Forme circulaire
-        color: currentColor,
-      ),
-      
-    );
+    switch(qwintoCell.getForm()){
+      case QwintoForm.circle:
+        return CircleCell(qwintoCell: qwintoCell,);        
+      case QwintoForm.pentagone:
+        return PentagonCell(qwintoCell: qwintoCell);
+      default : 
+        return const SizedBox(width: 40, height: 40,);
     }
-    return formCell
-        ? PentagonCell(value: value) // Affiche le pentagone si formCell est vrai
-        : CircleCell(value: value); // Affiche le cercle si formCell est faux
   }
 }

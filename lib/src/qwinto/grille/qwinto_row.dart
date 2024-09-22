@@ -1,93 +1,56 @@
 import 'package:flutter/material.dart';
-
-import 'package:gaming_portal/src/qwinto/store/qwinto_state.dart';
 import 'package:gaming_portal/src/qwinto/grille/qwinto_cell.dart';
+import 'package:gaming_portal/src/qwinto/store/qwinto_row.dart';
+import 'package:gaming_portal/src/qwinto/store/qwinto_state.dart';
 import 'package:provider/provider.dart';
 
 class ColorRowWidget extends StatelessWidget {
-  final String color;
+  final QwintoRow curRow;
 
-  const ColorRowWidget({super.key, required this.color});
+  const ColorRowWidget({super.key, required this.curRow});
 
   @override
   Widget build(BuildContext context) {
-    Color currentColor = (color == QwintoState.red)
-        ? Colors.red
-        : (color == QwintoState.yellow)
-            ? const Color.fromARGB(255, 228, 207, 12)
-            : Colors.purple; // Default to purple for 'blue'
-
     var qwintoState = Provider.of<QwintoState>(context);
-    List<int?> values = qwintoState.colorMap[color]!;
-    Map<int, Map<String, dynamic>> columnBonus = qwintoState.columns;
-
     return Container(
-      color: currentColor,
+      color: curRow.getColor(),
       child:  Row (
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: getCellList(values, context, qwintoState, currentColor, columnBonus),
-              )                
+                children: getCellList(context,qwintoState),
+              )
     );
   }
   
-  List<Widget> getCellList(List<int?> values,BuildContext context, QwintoState qwintoState, Color currentColor,Map<int, Map<String, dynamic>> columnBonus){
-    return  List.generate(
-      values.length,
-      (index) {
+  List<Widget> getCellList(BuildContext context,QwintoState qwintoState){
+    return  List.generate( 12, (index) {
         // Création des Text pour chaque valeur dans la liste
         return GestureDetector(
             onTap: () {
               // Lorsque la cellule est cliquée, met à jour l'état
-              _showInputDialog(context, qwintoState, color, index);
+              _showInputDialog(context, index,qwintoState);
             },
             child: Padding(
               padding: const EdgeInsets.all(4.0),
-              child: Cellule(
-                value: values[index],
-                currentColor: currentColor,
-                formCell: columnBonus.containsKey(index) ? columnBonus[index]!['color'] == color : false,
-              ),
+              child: Cellule( qwintoCell: curRow.getCell(index)),
             ));
       }
     );
   }
 
     // Fonction pour afficher un popup avec un champ de saisie
-  void _showInputDialog(BuildContext context, QwintoState qwintoState, String color, int index) {
+  void _showInputDialog(BuildContext context, int index,QwintoState qwintoState) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           content: DropdownButtonFormField<int>(
-                value: qwintoState.getRowValue(color, index) ?? 1, // Valeur initiale (1 par défaut)
-                onChanged: (int? newValue) {
-                  if (newValue != null) {
-                    qwintoState.updateRow(color, index, newValue);
-                    Navigator.of(context).pop(); // Ferme la boîte de dialogue
-                  }
-                },
-                items: List<DropdownMenuItem<int>>.generate(
-                  18, 
-                  (int index) => DropdownMenuItem<int>(
-                    value: index + 1,
-                    child: Text((index + 1).toString()),
-                  ),
-                ),
+                value: curRow.getValue(index) > 0 ? curRow.getValue(index) : 1, 
+                onChanged: (int? newValue) {if (newValue != null) {qwintoState.updateRow(curRow, index, newValue); Navigator.of(context).pop(); }},
+                items: List<DropdownMenuItem<int>>.generate(18, (int index) => DropdownMenuItem<int>(value: index +1 ,child: Text((index +1).toString()),),),
           ),
            actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                qwintoState.updateRow(color, index, null);
-                Navigator.of(context).pop(); // Ferme la boîte de dialogue
-              },
-              child: const Text('Vider'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Ferme la boîte de dialogue
-              },
-              child: const Text('Annuler'),
-            ),
+            TextButton( onPressed: () { curRow.setValue(index, 0);Navigator.of(context).pop(); }, child: const Text('Vider'), ),
+            TextButton(onPressed: () {Navigator.of(context).pop(); },child: const Text('Annuler'),),
             ]
         );
       }

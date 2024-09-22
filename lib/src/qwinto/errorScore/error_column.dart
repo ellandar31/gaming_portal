@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gaming_portal/src/qwinto/store/qwinto_errors.dart';
 import 'package:gaming_portal/src/qwinto/store/qwinto_state.dart';
 import 'package:provider/provider.dart';
 
@@ -7,8 +8,8 @@ class ErrorCheckWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     var qwintoState = Provider.of<QwintoState>(context);
-    List<int?> errors = qwintoState.errorList;
+    var qwintoState = Provider.of<QwintoState>(context);
+    QwintoErros errorObj = qwintoState.errors;
 
     return Container(
       padding: const EdgeInsets.all(10),
@@ -19,35 +20,36 @@ class ErrorCheckWidget extends StatelessWidget {
           const SizedBox(height: 5),
           Column(
             crossAxisAlignment : CrossAxisAlignment.center,
-            children: getCheckboxList(errors,context,qwintoState)
+            children: getCheckboxList(errorObj,context,qwintoState)
           ),
         ],
       ),
     );    
   }
   
-  List<Widget> getCheckboxList(List<int?> errors,BuildContext context, QwintoState qwintoState){
-    return  List.generate(
-      errors.length,
-      (index) {
+  List<Widget> getCheckboxList(QwintoErros errorObj,BuildContext context, QwintoState qwintoState){
+    return  List.generate( 4,(index) {
         // Création des Text pour chaque valeur dans la liste
-        return Checkbox(value: errors[index]! > 0, 
-              checkColor: Colors.black,
-              fillColor: WidgetStateProperty.resolveWith(getColor),
-              onChanged: (bool? value){qwintoState.addToError(value!,index);});
+        return Checkbox(value: qwintoState.errors.getError(index), 
+          checkColor: Colors.black,
+          fillColor: WidgetStateProperty.resolveWith(getColor),
+          onChanged: (bool? value){
+            errorObj.setError(index,value!);
+            qwintoState.updateScore();
+          }
+        );
       }
     );
   }
-
   
-    Color getColor(Set<WidgetState> states) {
-      const Set<WidgetState> interactiveStates = <WidgetState>{
-        WidgetState.pressed,
-      };
-      if (states.any(interactiveStates.contains)) {
-        return Colors.blue;
-      }
-      return Colors.white;
+  Color getColor(Set<WidgetState> states) {
+    const Set<WidgetState> interactiveStates = <WidgetState>{
+      WidgetState.pressed,
+    };
+    if (states.any(interactiveStates.contains)) {
+      return Colors.blue;
     }
+    return Colors.white;
+  }
 
 }
