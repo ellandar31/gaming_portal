@@ -13,7 +13,6 @@ class QwintoScoreBar extends StatelessWidget {
     var qwintoState = Provider.of<QwintoState>(context);
  
     return Container(
-      color : Colors.grey,
       child: Row(        
         children: [
           SquareCell(value: qwintoState.lineScoreMap[QwintoState.red], color : QwintoState.red,),

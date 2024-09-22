@@ -10,10 +10,7 @@ class QwintoGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Container(          
-            color: Colors.grey,
-            child: getGrid(), // Remplacez par le widget que vous souhaitez rotates
-        )
+        child: getGrid(), // Remplacez par le widget que vous souhaitez rotates
     );
   }
 

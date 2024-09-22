@@ -12,7 +12,6 @@ class ErrorCheckWidget extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.all(10),
-      color: Colors.grey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
