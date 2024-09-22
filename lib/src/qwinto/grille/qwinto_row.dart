@@ -77,10 +77,18 @@ class ColorRowWidget extends StatelessWidget {
            actions: <Widget>[
             TextButton(
               onPressed: () {
+                qwintoState.updateRow(color, index, null);
+                Navigator.of(context).pop(); // Ferme la boîte de dialogue
+              },
+              child: const Text('Vider'),
+            ),
+            TextButton(
+              onPressed: () {
                 Navigator.of(context).pop(); // Ferme la boîte de dialogue
               },
               child: const Text('Annuler'),
-            ),]
+            ),
+            ]
         );
       }
     );
