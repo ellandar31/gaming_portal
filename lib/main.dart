@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-       title: 'Qwinto',
+      title: 'Qwinto',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor : Colors.grey,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

@@ -15,8 +15,8 @@ class QwintoScoreBar extends StatelessWidget {
     var qwintoState = Provider.of<QwintoState>(context);
     QwintoScore score = qwintoState.score;
  
-    return Row(        
-      children: [
+     return Row(        
+       children: [
         SquareCell(qwintoCell: score.scoreRed,),
       const SizedBox(width: 10),
         SquareCell(qwintoCell: score.scoreYellow),
@@ -34,8 +34,8 @@ class QwintoScoreBar extends StatelessWidget {
         PentagonCell(qwintoCell: score.scoreCols[PentagonesCol.fourth]!),
       const SizedBox(width: 10),
         PentagonCell(qwintoCell: score.scoreCols[PentagonesCol.fifth]!),
-      const SizedBox(width: 10),
-        const Text("-",style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+       const SizedBox(width: 10),
+         const Text("-",style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
       const SizedBox(width: 10),
         SquareCell(qwintoCell: score.scoreErr),
       const SizedBox(width: 10),

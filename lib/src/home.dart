@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_portal/src/qwinto/qwinto_page.dart';
-import 'package:gaming_portal/src/qwinto/reinit_button.dart';
+import 'package:gaming_portal/src/qwinto/refresh_button.dart';
 import 'package:gaming_portal/src/qwinto/store/qwinto_state.dart';
 import 'package:provider/provider.dart';
 

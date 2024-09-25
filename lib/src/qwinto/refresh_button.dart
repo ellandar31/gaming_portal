@@ -14,7 +14,7 @@ class RefreshButton extends StatelessWidget {
     return IconButton(
       icon: const Icon(Icons.refresh),
       onPressed: () {
-       qwintoState.reinit();
+        qwintoState.reinit();
       },
     );
   }
