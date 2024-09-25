@@ -12,13 +12,13 @@ class QwintoScore {
   QwintoCell scoreBlue = QwintoCell(value: 0, form: QwintoForm.square, color: Colors.yellow);
   QwintoCell scoreYellow = QwintoCell(value: 0, form: QwintoForm.square, color: Colors.purple);
 
-  Map<PentagonesCol, QwintoCell> scoreCols = [
-    {PentagonesCol.first, QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black)},
-    {PentagonesCol.second, QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black)},
-    {PentagonesCol.third, QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black)},
-    {PentagonesCol.fourth, QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black)},
-    {PentagonesCol.fifth, QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black)},
-  ] as Map<PentagonesCol, QwintoCell>;
+  Map<PentagonesCol, QwintoCell> scoreCols = {
+    PentagonesCol.first: QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black),
+    PentagonesCol.second: QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black),
+    PentagonesCol.third: QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black),
+    PentagonesCol.fourth: QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black),
+    PentagonesCol.fifth: QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black),
+  };
   
   QwintoCell scoreErr = QwintoCell(value: 0, form: QwintoForm.square, color: Colors.black);
   QwintoCell scoreTot = QwintoCell(value: 0, form: QwintoForm.square, color: Colors.black);
@@ -30,13 +30,13 @@ class QwintoScore {
     scoreBlue.setValue(0);
     scoreYellow.setValue(0);
 
-    scoreCols = [
-      {PentagonesCol.first, QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black)},
-      {PentagonesCol.second, QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black)},
-      {PentagonesCol.third, QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black)},
-      {PentagonesCol.fourth, QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black)},
-      {PentagonesCol.fifth, QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black)},
-    ] as Map<PentagonesCol, QwintoCell>;
+    scoreCols = {
+      PentagonesCol.first: QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black),
+      PentagonesCol.second: QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black),
+      PentagonesCol.third: QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black),
+      PentagonesCol.fourth: QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black),
+      PentagonesCol.fifth: QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black),
+    };
       
     scoreErr.setValue(0);
     scoreTot.setValue(0);
