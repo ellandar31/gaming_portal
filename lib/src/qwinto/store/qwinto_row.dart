@@ -13,7 +13,7 @@ class QwintoRow {
   }
 
   void initList(){
-
+    _cells.clear();
     _cells.add(QwintoCell( form : _color == QwintoColor.blue ? QwintoForm.circle : QwintoForm.empty, value: 0, color: Colors.black));
     _cells.add(QwintoCell( form : _color == QwintoColor.red  ? QwintoForm.empty : QwintoForm.circle, value: 0, color: Colors.black));
     _cells.add(QwintoCell( form : _color == QwintoColor.blue ? QwintoForm.pentagone : QwintoForm.circle, value: 0, color: Colors.black));
