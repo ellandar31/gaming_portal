@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gaming_portal/firebase/firebase_options.dart';
 import 'package:gaming_portal/src/home.dart';
 
@@ -7,11 +8,17 @@ import 'guard/auth_gate.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  runApp(const MyApp());
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight,
+  ]).then( (_){
+      runApp(const MyApp());
+    }
+  );
 }
 
 class MyApp extends StatelessWidget {
