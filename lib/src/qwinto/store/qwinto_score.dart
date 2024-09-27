@@ -9,8 +9,8 @@ import 'qwinto_cell.dart';
 class QwintoScore {
 
   QwintoCell scoreRed = QwintoCell(value: 0, form: QwintoForm.square, color: Colors.red);
-  QwintoCell scoreBlue = QwintoCell(value: 0, form: QwintoForm.square, color: Colors.yellow);
-  QwintoCell scoreYellow = QwintoCell(value: 0, form: QwintoForm.square, color: Colors.purple);
+  QwintoCell scoreYellow = QwintoCell(value: 0, form: QwintoForm.square, color: Colors.yellow);
+  QwintoCell scoreBlue = QwintoCell(value: 0, form: QwintoForm.square, color: Colors.purple);
 
   Map<PentagonesCol, QwintoCell> scoreCols = {
     PentagonesCol.first: QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black),
