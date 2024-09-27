@@ -17,7 +17,7 @@ class SquareCell extends StatelessWidget {
         border: Border.all(color: qwintoCell.getColor(), width: 4),
       ),
       child: Center( child: Text(
-          qwintoCell.getValue() > 0 ? qwintoCell.getValue().toString() : '',
+          qwintoCell.getValue().toString(),
           textAlign: TextAlign.center,
           style: const TextStyle( fontSize: 16, color: Colors.black, ),
         ),

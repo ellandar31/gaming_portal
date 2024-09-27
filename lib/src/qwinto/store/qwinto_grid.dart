@@ -20,7 +20,7 @@ class QwintoColorGrid {
   int getColScore(PentagonesCol column){
     int col = column.getColumn();
 
-    if (redRow.getValue(col) > 0 && redRow.getValue(col) > 0 && redRow.getValue(col) > 0)
+    if (redRow.getValue(col) > 0 && blueRow.getValue(col) > 0 && yellowRow.getValue(col) > 0)
     {
       switch(column.getColor()){
         case QwintoColor.red:
