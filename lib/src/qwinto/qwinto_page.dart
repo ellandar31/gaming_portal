@@ -12,8 +12,9 @@ class QwintoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Column(
-      children:[ SingleChildScrollView(
+    return Stack(
+      children:[ 
+        SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,

@@ -36,7 +36,16 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomeScreen(), //const AuthGate(),
+      home: Scaffold(
+        body: 
+          Center(
+            child: ElevatedButton(onPressed: (){
+              Get.to( () => const HomeScreen());
+            }, 
+              child: 
+                const Text("Ouvrir la page Qwinto")),
+          ), 
+      ),
     );
   }
 }

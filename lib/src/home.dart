@@ -20,21 +20,21 @@ class HomeScreen extends StatelessWidget {
     return ChangeNotifierProvider(
         create: (context) => QwintoState(),
         child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Qwinto App v6'), // Barre en haut
-              backgroundColor: Colors.blue, // Couleur de la barre
-          actions: [
-            //TODO add your actions here 
-            const DicesResult(), // Affichage des résultats
-            const SizedBox(width: 20,),
-            ModalDiceLauncher(diceColors: diceColors), // Widget modifié pour GetX        
-            const SizedBox(width: 10,),
-            const RefreshButton(),
-            //ProfileButton(),
-          ],
-          automaticallyImplyLeading: false,
-        ),
-        body: const QwintoPage(),
+          appBar: AppBar(
+            title: const Text('Qwinto App v7'), // Barre en haut
+            backgroundColor: Colors.blue, // Couleur de la barre
+            actions: [
+              //TODO add your actions here 
+              const DicesResult(), // Affichage des résultats
+              const SizedBox(width: 20,),
+              ModalDiceLauncher(diceColors: diceColors), // Widget modifié pour GetX        
+              const SizedBox(width: 10,),
+              const RefreshButton(),
+              //ProfileButton(),
+            ],
+            automaticallyImplyLeading: true,
+          ),
+          body: const QwintoPage(),
       )
     );
   }
