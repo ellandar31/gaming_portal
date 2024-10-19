@@ -7,7 +7,6 @@ import 'package:gaming_portal/src/home.dart';
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
 
-  //TODO UPDATE with the key of your firebase project
   static const clientId =
       '81037857892-0bdto60k4kldcf48aidapfa89k12ik4s.apps.googleusercontent.com';
 
@@ -27,7 +26,7 @@ class AuthGate extends StatelessWidget {
                 padding: const EdgeInsets.all(1),
                 child: AspectRatio(
                   aspectRatio: 100,
-                  child: Image.asset('default/flutterfire_300x.png'),
+                  child: Image.asset('default/dash.png'),
                 ),
               );
             },
@@ -53,7 +52,7 @@ class AuthGate extends StatelessWidget {
                 padding: const EdgeInsets.all(2),
                 child: AspectRatio(
                   aspectRatio: 10,
-                  child: Image.asset('default/flutterfire_300x.png'),
+                  child: Image.asset('default/dash.png'),
                 ),
               );
             },
