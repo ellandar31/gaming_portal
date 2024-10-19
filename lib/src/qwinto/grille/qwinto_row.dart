@@ -13,7 +13,7 @@ class ColorRowWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var qwintoState = Provider.of<QwintoState>(context);
     return Container(
-        color: curRow.getColor(),
+        color: curRow.getColor().value,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: getCellList(context, qwintoState),

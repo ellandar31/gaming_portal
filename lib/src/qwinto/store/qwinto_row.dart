@@ -41,8 +41,8 @@ class QwintoRow {
     return _cells[position];
   }
 
-  Color getColor(){
-    return _color.getValue();
+  QwintoColor getColor(){
+    return _color;
   }
 
   int getScore(){ 
@@ -53,9 +53,18 @@ class QwintoRow {
   }
 
   bool checkRow(int position, int value){   
+    //transformation de la liste de cells pour récupérer uniquement les int qui sont saisis
+    List<int> purgedRowInt = _cells.where((cell) => cell.getForm() != QwintoForm.empty && cell.getValue() > 0).map((cell) => cell.getValue()).toList();
+    //test si la valeur est déjà présente
+    if(purgedRowInt.contains(value)){
+      return false;
+    }
+    //copie de la ligne pour setter la nouvelle valeur
     List<QwintoCell> copiedCells = List.from(_cells);
     copiedCells[position].setValue(value);
+    //purge pour enlever les cellules vides
     List<int> purgedRow = _cells.where((value) => value.getForm() != QwintoForm.empty && value.getValue() > 0).map((cell) => cell.getValue()).toList();
+    //test si toutes les valeurs sont dans l'ordre croissant 
     for (int i = 0; i < purgedRow.length - 1; i++) {
       if (purgedRow[i] > purgedRow[i + 1]) {
         return false; // La liste n'est pas triée

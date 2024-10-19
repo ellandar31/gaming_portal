@@ -3,6 +3,7 @@ import 'package:gaming_portal/src/qwinto/store/qwinto_errors.dart';
 import 'package:gaming_portal/src/qwinto/store/qwinto_grid.dart';
 import 'package:gaming_portal/src/qwinto/store/qwinto_row.dart';
 import 'package:gaming_portal/src/qwinto/store/qwinto_score.dart';
+import 'package:get/get.dart';
 
 class QwintoState extends ChangeNotifier {
 
@@ -45,9 +46,26 @@ class QwintoState extends ChangeNotifier {
 
  
   void updateRow(QwintoRow curRow, int position, int value) {
-    curRow.setValue(position, value); 
-    checkEndParty();
-    updateScore(); 
+    if(grid.checkColumn(position, curRow.getColor(), value) && curRow.checkRow(position, value)){
+      curRow.setValue(position, value); 
+      checkEndParty();
+      updateScore(); 
+    }
+    else{
+       Get.snackbar(
+              'Erreur', // Titre de la Snackbar
+              'Impossible de mettre cette valeur ici, \nrejouez ailleurs ou rentrez une erreur.', // Contenu de la Snackbar
+              duration: const Duration(seconds: 5), // Durée de la Snackbar
+              snackPosition: SnackPosition.BOTTOM, // Position de la Snackbar
+              backgroundColor: Colors.red, // Couleur de fond
+              colorText: Colors.white, // Couleur du texte
+              borderRadius: 10, // Arrondi des coins
+              margin: const EdgeInsets.all(10), // Marge
+              animationDuration: const Duration(milliseconds: 300), // Durée de l'animation
+              isDismissible: true, // Permet à l'utilisateur de fermer la Snackbar
+              dismissDirection: DismissDirection.horizontal, // Direction de suppression
+            );
+    }
   }
 
   void checkEndParty() {
@@ -61,5 +79,6 @@ class QwintoState extends ChangeNotifier {
     scoreTotalValeur = score.updateScore(grid, errors);
     notifyListeners();  
   }
+
 
 }
