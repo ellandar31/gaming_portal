@@ -23,6 +23,8 @@ class QwintoScore {
   QwintoCell scoreErr = QwintoCell(value: 0, form: QwintoForm.square, color: Colors.black);
   QwintoCell scoreTot = QwintoCell(value: 0, form: QwintoForm.square, color: Colors.black);
 
+  
+
   QwintoScore();
 
   void reinit(){      
@@ -43,7 +45,7 @@ class QwintoScore {
   }
 
   //met à jour les valeurs de scores 
-  void updateScore(QwintoColorGrid grid, QwintoErros errors){
+  int updateScore(QwintoColorGrid grid, QwintoErros errors){
     int total = 0;
 
     //scores des lignes
@@ -60,6 +62,7 @@ class QwintoScore {
       total += val;
     }
     scoreTot.setValue(total);
+    return total;
   }
 
 }

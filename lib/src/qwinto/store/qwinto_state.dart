@@ -18,6 +18,7 @@ class QwintoState extends ChangeNotifier {
   static const String blue = "BLUE";
 
   bool endParty = false;
+  int scoreTotalValeur = 0;
 
   QwintoState(){
     grid.reinit();
@@ -31,6 +32,7 @@ class QwintoState extends ChangeNotifier {
   }
 
   void reinit(){
+    endParty = false;
     grid.reinit();
     errors.reinit();
     score.reinit();
@@ -50,10 +52,13 @@ class QwintoState extends ChangeNotifier {
 
   void checkEndParty() {
     endParty = errors.isFilled() || grid.isFilled();
+    if(endParty){
+      notifyListeners();
+    }
   }
 
   void updateScore() {
-    score.updateScore(grid, errors);
+    scoreTotalValeur = score.updateScore(grid, errors);
     notifyListeners();  
   }
 
