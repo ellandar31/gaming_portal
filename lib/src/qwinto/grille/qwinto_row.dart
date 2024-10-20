@@ -26,7 +26,9 @@ class ColorRowWidget extends StatelessWidget {
       return GestureDetector(
           onTap: () {
             // Lorsque la cellule est cliquée, met à jour l'état
-            _showInputDialog(context, index, qwintoState);
+            if(qwintoState.currentRoll != null && !curRow.getCell(index).isDisaballed()) {
+              _showInputDialog(context, index, qwintoState);
+            }
           },
           child: Padding(
             padding: const EdgeInsets.all(4.0),
@@ -41,7 +43,7 @@ class ColorRowWidget extends StatelessWidget {
     showDialog(
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(
+          return AlertDialog(/*
               content: DropdownButtonFormField<int>(
                 value: curRow.getValue(index) > 0 ? curRow.getValue(index) : 1,
                 onChanged: (int? newValue) {
@@ -57,15 +59,23 @@ class ColorRowWidget extends StatelessWidget {
                     child: Text((index + 1).toString()),
                   ),
                 ),
-              ),
-              actions: <Widget>[
+              ),*/
+              content: Text('Voulez vous vraiment mettre la valeur \n ${qwintoState.currentRoll} dans cette cellule') ,
+              actions: <Widget>[                
+                TextButton(
+                  onPressed: () {
+                    qwintoState.updateRow(curRow, index, qwintoState.currentRoll!);
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Valider'),
+                ),/*
                 TextButton(
                   onPressed: () {
                     qwintoState.updateRow(curRow, index, 0);
                     Navigator.of(context).pop();
                   },
                   child: const Text('Vider'),
-                ),
+                ),*/
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();

@@ -54,6 +54,9 @@ class QwintoColorGrid {
     redRow.preFilled(0);
     yellowRow.preFilled(0);
     purpleRow.preFilled(0);
+    if (!colors.contains(Colors.red)) redRow.preFilled(20);
+    if (!colors.contains(Colors.yellow)) yellowRow.preFilled(20);
+    if (!colors.contains(Colors.purple)) purpleRow.preFilled(20);
     // pour toutes les couleurs dans la liste appel à preFilled 
     for(int index=0; index < colors.length; index ++ ){
       switch(colors[index]){

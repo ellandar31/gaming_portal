@@ -26,17 +26,7 @@ class QwintoState extends ChangeNotifier {
     grid.reinit();
     errors.reinit();
     score.reinit();
-/*
-    // Écoutez les changements dans les dés
-    ever(diceController.dices, (_) {
-      if (diceController.dices.isNotEmpty) {
-        var purgedDiceValues = diceController.dices.value.where((dice) => dice.isSelected).toList();
-        if(purgedDiceValues.isNotEmpty) {
-          // Si la liste n'est pas vide, on appelle la fonction de mise à jour
-          updateValue(purgedDiceValues);
-        }
-      }
-    });*/
+
   }
 
   void updateValue(List<DiceResult> diceResult) {
@@ -59,6 +49,7 @@ class QwintoState extends ChangeNotifier {
     grid.reinit();
     errors.reinit();
     score.reinit();
+    currentRoll = null;
     notifyListeners();
   }
 

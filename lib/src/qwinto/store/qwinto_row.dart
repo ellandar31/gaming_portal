@@ -84,6 +84,11 @@ class QwintoRow {
       for (int index = 0; index < _cells.length; index++) {
         _cells[index].setDisabelled(_cells[index].getValue() > 0);
       }
+    } else if (currentRoll == 20) {
+      // Si la valeur courante est 20, on désactive toutes les cellules 
+      for (int index = 0; index < _cells.length; index++) {
+        _cells[index].setDisabelled(true);
+      }
     } else {
       // Pour les cellules avant la première occurrence d'une valeur supérieure à currentRoll
       int? resultMax = getClosestHigherIndex(currentRoll)?? _cells.length + 1;
