@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dice/dice_package.dart';
 import 'package:gaming_portal/src/qwinto/store/qwinto_errors.dart';
 import 'package:gaming_portal/src/qwinto/store/qwinto_grid.dart';
 import 'package:gaming_portal/src/qwinto/store/qwinto_row.dart';
@@ -16,7 +17,7 @@ class QwintoState extends ChangeNotifier {
 
   static const String red = "RED";
   static const String yellow = "YELLOW";
-  static const String blue = "BLUE";
+  static const String purple = "PURPLE";
 
   bool endParty = false;
   int scoreTotalValeur = 0;
@@ -25,11 +26,32 @@ class QwintoState extends ChangeNotifier {
     grid.reinit();
     errors.reinit();
     score.reinit();
- }
+/*
+    // Écoutez les changements dans les dés
+    ever(diceController.dices, (_) {
+      if (diceController.dices.isNotEmpty) {
+        var purgedDiceValues = diceController.dices.value.where((dice) => dice.isSelected).toList();
+        if(purgedDiceValues.isNotEmpty) {
+          // Si la liste n'est pas vide, on appelle la fonction de mise à jour
+          updateValue(purgedDiceValues);
+        }
+      }
+    });*/
+  }
 
-  void updateValue(int newValue) {
-    currentRoll = newValue;
-    notifyListeners(); // Notifie les widgets pour mettre à jour
+  void updateValue(List<DiceResult> diceResult) {
+    if(diceResult.isEmpty){
+      return;
+    }
+    List<int> purgedDiceValues = diceResult.map((dice) => dice.number).toList();    
+    // Si la liste n'est pas vide, on calcule la somme des valeurs, sinon currentRoll reste null ou 0
+    currentRoll = purgedDiceValues.isNotEmpty 
+        ? purgedDiceValues.reduce((value, element) => value + element) 
+        : 0;
+
+    //mise à jour de la grille 
+    grid.preFilled(diceResult.map((dice) => dice.curColor).toList(),currentRoll!);
+    notifyListeners(); // Notifie les widgets pour mettre à jour      
   }
 
   void reinit(){

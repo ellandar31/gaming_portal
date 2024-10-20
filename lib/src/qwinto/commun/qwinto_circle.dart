@@ -11,7 +11,8 @@ class CircleCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container( width: 40, height: 40, 
-      decoration: const BoxDecoration( shape: BoxShape.circle, color: Colors.white, ),
+      decoration: BoxDecoration( shape: BoxShape.circle, 
+            color:qwintoCell.isDisaballed() ? Colors.grey: Colors.white, ),
       child: Center(
         child: Text(
           qwintoCell.getValue() > 0 ? qwintoCell.getValue().toString() : '',

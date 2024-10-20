@@ -77,4 +77,65 @@ class QwintoRow {
     List<int> purgedRow = _cells.where((value) => value.getForm() != QwintoForm.empty && value.getValue() > 0).map((cell) => cell.getValue()).toList();
     return purgedRow.length >= 9;
   }
+  
+  void preFilled(int currentRoll) {
+    if (currentRoll == 0) {
+      // Si la valeur courante est 0, on désactive les cellules déjà remplies
+      for (int index = 0; index < _cells.length; index++) {
+        _cells[index].setDisabelled(_cells[index].getValue() > 0);
+      }
+    } else {
+      // Pour les cellules avant la première occurrence d'une valeur supérieure à currentRoll
+      int? resultMax = getClosestHigherIndex(currentRoll)?? _cells.length + 1;
+      int? resultMin = getClosestLowerIndex(currentRoll)?? - 1;
+      for(int index = 0;index < _cells.length; index++){
+        if(!_cells[index].isDisaballed() && _cells[index].getForm() != QwintoForm.empty){
+          _cells[index].setDisabelled(index <= resultMin || index >= resultMax);          
+        }
+      }    
+      
+    }
+  }
+
+  int? getClosestLowerIndex(int currentRoll) {
+    int? closestIndex;
+    int? closestValue;
+
+    for (int index = 0; index < _cells.length; index++) {
+      int cellValue = _cells[index].getValue();
+      
+      // Vérifier que la cellule a une valeur valide et inférieure à currentRoll
+      if (cellValue > 0 && cellValue < currentRoll) {
+        // Si c'est la première valeur trouvée ou si la valeur est plus proche de currentRoll
+        if (closestValue == null || (currentRoll - cellValue) < (currentRoll - closestValue)) {
+          closestValue = cellValue;
+          closestIndex = index;
+        }
+      }
+    }
+    
+    return closestIndex; // Retourner l'index de la valeur la plus proche, ou null si aucune valeur ne correspond
+  }
+
+  
+  int? getClosestHigherIndex(int currentRoll) {
+    int? closestIndex;
+    int? closestValue;
+
+    for (int index = 0; index < _cells.length; index++) {
+      int cellValue = _cells[index].getValue();
+      
+      // Vérifier que la cellule a une valeur valide et inférieure à currentRoll
+      if (cellValue > 0 && cellValue > currentRoll) {
+        // Si c'est la première valeur trouvée ou si la valeur est plus proche de currentRoll
+        if (closestValue == null || (cellValue - currentRoll) < (closestValue - currentRoll)) {
+          closestValue = cellValue;
+          closestIndex = index;
+        }
+      }
+    }
+    
+    return closestIndex; // Retourner l'index de la valeur la plus proche, ou null si aucune valeur ne correspond
+  }
+
 }

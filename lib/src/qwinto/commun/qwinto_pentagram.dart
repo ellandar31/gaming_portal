@@ -13,7 +13,7 @@ class PentagonCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox( width: 40, height: 40, 
       child: CustomPaint(
-        painter: PentagonPainter(), // Utilisation du PentagonPainter pour dessiner le pentagone
+        painter: PentagonPainter(qwintoCell.isDisaballed() ? Colors.grey: Colors.white), // Utilisation du PentagonPainter pour dessiner le pentagone
         child: Center( child: Text(
             qwintoCell.getValue() > 0 ? qwintoCell.getValue().toString() : '',
             textAlign: TextAlign.center,
@@ -27,9 +27,12 @@ class PentagonCell extends StatelessWidget {
 
 // Painter pour dessiner un pentagone
 class PentagonPainter extends CustomPainter {
+  final Color _fillColor;
+  PentagonPainter(this._fillColor);
+
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = Colors.white; // Couleur du pentagone
+    final paint = Paint()..color = _fillColor; // Couleur du pentagone
 
     final path = Path();
     final centerX = size.width / 2;
