@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 enum QwintoColor { 
   red (Colors.red), 
   yellow (Colors.yellow), 
-  blue (Colors.purple) ;
+  purple (Colors.purple) ;
   
   final Color value;
 
@@ -26,11 +26,11 @@ enum QwintoForm {
 }
 
 enum PentagonesCol{
-  first(2, QwintoColor.blue),
+  first(2, QwintoColor.purple),
   second(3,QwintoColor.red),
   third(7,QwintoColor.red),
   fourth(8,QwintoColor.yellow),
-  fifth(9,QwintoColor.blue);
+  fifth(9,QwintoColor.purple);
 
   final int column;
   final QwintoColor color;

@@ -22,7 +22,7 @@ class QwintoGrid extends StatelessWidget {
             ColorRowWidget(curRow: qwintoState.grid.yellowRow,),
             const SizedBox(height: 16),
             // Affiche la Row pour la couleur bleue
-            ColorRowWidget(curRow: qwintoState.grid.blueRow,),
+            ColorRowWidget(curRow: qwintoState.grid.purpleRow,),
           ],
         ),
     );

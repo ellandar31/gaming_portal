@@ -14,17 +14,17 @@ class QwintoRow {
 
   void initList(){
     _cells.clear();
-    _cells.add(QwintoCell( form : _color == QwintoColor.blue ? QwintoForm.circle : QwintoForm.empty, value: 0, color: Colors.black));
+    _cells.add(QwintoCell( form : _color == QwintoColor.purple ? QwintoForm.circle : QwintoForm.empty, value: 0, color: Colors.black));
     _cells.add(QwintoCell( form : _color == QwintoColor.red  ? QwintoForm.empty : QwintoForm.circle, value: 0, color: Colors.black));
-    _cells.add(QwintoCell( form : _color == QwintoColor.blue ? QwintoForm.pentagone : QwintoForm.circle, value: 0, color: Colors.black));
+    _cells.add(QwintoCell( form : _color == QwintoColor.purple ? QwintoForm.pentagone : QwintoForm.circle, value: 0, color: Colors.black));
     _cells.add(QwintoCell( form : _color == QwintoColor.red ? QwintoForm.pentagone : QwintoForm.circle, value: 0, color: Colors.black));
-    _cells.add(QwintoCell( form : _color == QwintoColor.blue ? QwintoForm.empty : QwintoForm.circle, value: 0, color: Colors.black));
+    _cells.add(QwintoCell( form : _color == QwintoColor.purple ? QwintoForm.empty : QwintoForm.circle, value: 0, color: Colors.black));
     _cells.add(QwintoCell( form : _color == QwintoColor.red ? QwintoForm.empty : QwintoForm.circle, value: 0, color: Colors.black));
     _cells.add(QwintoCell( form : _color == QwintoColor.yellow ? QwintoForm.empty : QwintoForm.circle, value: 0, color: Colors.black));
     _cells.add(QwintoCell( form : _color == QwintoColor.red ? QwintoForm.pentagone : QwintoForm.circle, value: 0, color: Colors.black));
     _cells.add(QwintoCell( form : _color == QwintoColor.yellow ? QwintoForm.pentagone : QwintoForm.circle, value: 0, color: Colors.black));
-    _cells.add(QwintoCell( form : _color == QwintoColor.blue ? QwintoForm.pentagone : QwintoForm.circle, value: 0, color: Colors.black));
-    _cells.add(QwintoCell( form : _color == QwintoColor.blue ? QwintoForm.empty : QwintoForm.circle, value: 0, color: Colors.black));
+    _cells.add(QwintoCell( form : _color == QwintoColor.purple ? QwintoForm.pentagone : QwintoForm.circle, value: 0, color: Colors.black));
+    _cells.add(QwintoCell( form : _color == QwintoColor.purple ? QwintoForm.empty : QwintoForm.circle, value: 0, color: Colors.black));
     _cells.add(QwintoCell( form : _color == QwintoColor.red ? QwintoForm.circle : QwintoForm.empty, value: 0, color: Colors.black));
 
   }

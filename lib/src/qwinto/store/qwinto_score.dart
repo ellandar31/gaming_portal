@@ -10,7 +10,7 @@ class QwintoScore {
 
   QwintoCell scoreRed = QwintoCell(value: 0, form: QwintoForm.square, color: Colors.red);
   QwintoCell scoreYellow = QwintoCell(value: 0, form: QwintoForm.square, color: Colors.yellow);
-  QwintoCell scoreBlue = QwintoCell(value: 0, form: QwintoForm.square, color: Colors.purple);
+  QwintoCell scorePurple = QwintoCell(value: 0, form: QwintoForm.square, color: Colors.purple);
 
   Map<PentagonesCol, QwintoCell> scoreCols = {
     PentagonesCol.first: QwintoCell(value: 0, form: QwintoForm.pentagone, color: Colors.black),
@@ -29,7 +29,7 @@ class QwintoScore {
 
   void reinit(){      
     scoreRed.setValue(0);
-    scoreBlue.setValue(0);
+    scorePurple.setValue(0);
     scoreYellow.setValue(0);
 
     scoreCols = {
@@ -50,10 +50,10 @@ class QwintoScore {
 
     //scores des lignes
     scoreRed.setValue(grid.redRow.getScore());
-    scoreBlue.setValue(grid.blueRow.getScore());
+    scorePurple.setValue(grid.purpleRow.getScore());
     scoreYellow.setValue(grid.yellowRow.getScore());
     scoreErr.setValue(errors.getScore());
-    total = scoreRed.getValue() + scoreBlue.getValue() + scoreYellow.getValue() - scoreErr.getValue();
+    total = scoreRed.getValue() + scorePurple.getValue() + scoreYellow.getValue() - scoreErr.getValue();
 
     //scores des colonnes
     for(PentagonesCol key in scoreCols.keys){

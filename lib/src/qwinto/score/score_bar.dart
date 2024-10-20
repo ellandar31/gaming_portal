@@ -21,7 +21,7 @@ class QwintoScoreBar extends StatelessWidget {
       const SizedBox(width: 10),
         SquareCell(qwintoCell: score.scoreYellow),
       const SizedBox(width: 10),
-        SquareCell(qwintoCell: score.scoreBlue),
+        SquareCell(qwintoCell: score.scorePurple),
       const SizedBox(width: 10),
         const Text("+",style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
       const SizedBox(width: 10),
